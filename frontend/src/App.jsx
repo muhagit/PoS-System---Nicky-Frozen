@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import LoginPage from "./pages/auth/LoginPage";
+import LandingPage from "./pages/LandingPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import KasirPage from "./pages/kasir/KasirPage";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -33,7 +34,8 @@ function App() {
                 {/* =========================================
                     1. RUTE UTAMA (ROOT)
                 ========================================= */}
-                <Route path="/" element={<LoginPage />} />
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/login" element={<LoginPage />} />
                 {/* =========================================
                     2. RUTE OWNER
                 ========================================= */}

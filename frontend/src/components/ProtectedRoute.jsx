@@ -6,7 +6,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 
     if (!userInfoString) {
         // Belum login, arahkan ke login
-        return <Navigate to="/" replace />;
+        return <Navigate to="/login" replace />;
     }
 
     try {
@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
         if (!userInfo || !userInfo.token) {
             // Token tidak valid atau kosong
             localStorage.removeItem("userInfo");
-            return <Navigate to="/" replace />;
+            return <Navigate to="/login" replace />;
         }
 
         if (allowedRoles && !allowedRoles.includes(userInfo.role)) {
@@ -28,7 +28,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
                 return <Navigate to="/kasir" replace />;
             } else {
                 localStorage.removeItem("userInfo");
-                return <Navigate to="/" replace />;
+                return <Navigate to="/login" replace />;
             }
         }
 
@@ -36,7 +36,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
     } catch (e) {
         // JSON parse error (data local storage korup)
         localStorage.removeItem("userInfo");
-        return <Navigate to="/" replace />;
+        return <Navigate to="/login" replace />;
     }
 };
 

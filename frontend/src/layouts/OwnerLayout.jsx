@@ -22,7 +22,7 @@ const OwnerLayout = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
-    navigate("/");
+    navigate("/login");
   };
 
   const [unreadNotif, setUnreadNotif] = useState(0);

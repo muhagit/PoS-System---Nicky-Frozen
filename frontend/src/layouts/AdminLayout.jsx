@@ -18,7 +18,7 @@ const AdminLayout = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("userInfo");
-        navigate("/");
+        navigate("/login");
     };
 
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
