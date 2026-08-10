@@ -1,9 +1,13 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL;
+let rawUrl = (import.meta.env.VITE_API_URL || "").trim();
+if (rawUrl && !rawUrl.startsWith("http://") && !rawUrl.startsWith("https://")) {
+    rawUrl = `https://${rawUrl}`;
+}
+rawUrl = rawUrl.replace(/\/+$/, "");
 
 const API = axios.create({
-    baseURL: `${API_URL}/api`,
+    baseURL: rawUrl ? `${rawUrl}/api` : "/api",
 });
 
 // Otomatis menyisipkan Token JWT ke setiap request jika user sudah login
